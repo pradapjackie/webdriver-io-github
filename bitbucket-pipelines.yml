@@ -1,4 +1,4 @@
-image: ianwalter/puppeteer:latest
+image: node:latest
 
 pipelines:
   default:

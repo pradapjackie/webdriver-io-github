@@ -1,5 +1,5 @@
 {
-  "name": "untitled",
+  "name": "webdriverio",
   "type": "module",
   "devDependencies": {
     "@wdio/allure-reporter": "^8.34.0",
