@@ -1,0 +1,30 @@
+image: node:latest
+
+pipelines:
+  default:
+    - step:
+        name: Install Dependencies
+        caches:
+          - node
+        script:
+          - npm install
+
+    - step:
+        name: Run Tests
+        script:
+          - npm run wdio
+
+    - step:
+        name: Generate Allure Report
+        image: pradapjackie/allure-reports-generation:1.0
+        artifacts:
+          paths:
+            - allure-results
+            - allure-report
+        when: always
+        expire_in: 1 days
+        script:
+          - allure generate allure-results --clean -o allure-report
+        allow_failure: true
+        rules:
+          - when: always
