@@ -7,7 +7,7 @@ pipelines:
           - node
         script:
           - npm install
-          - npm install --save-dev npm-install
+          - npm run npm-install
           - npm run wdio 
           
     - step:
