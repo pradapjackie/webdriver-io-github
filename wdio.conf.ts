@@ -62,7 +62,7 @@ export const config: Options.Testrunner = {
         maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ["--headless", "user-agent=...","--disable-gpu","--window-size=1440,735"]
+            args: ['headless', 'disable-gpu']
         }
 
     } ],
