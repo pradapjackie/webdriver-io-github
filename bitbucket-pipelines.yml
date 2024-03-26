@@ -3,17 +3,13 @@ image: node:latest
 pipelines:
   default:
     - step:
-        name: Install Dependencies
+        name: Install Dependencies and Run Tests
         caches:
           - node
         script:
           - npm install
-
-    - step:
-        name: Run Tests
-        script:
-          - npm run wdio
-
+          - npm run wdio 
+          
     - step:
         name: Generate Allure Report
         image: pradapjackie/allure-reports-generation:1.0
