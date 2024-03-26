@@ -11,6 +11,7 @@
     "typescript": "^5.4.3"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.ts"
+    "wdio": "wdio run ./wdio.conf.ts",
+    "preinstall": "npm-install libnss3"
   }
 }
