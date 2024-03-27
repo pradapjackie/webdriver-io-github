@@ -5,22 +5,29 @@ pipelines:
     - step:
         name: Install Node.js 18 with nvm
         script:
-          # Install prerequisites
-          - apt-get update && apt-get install -y curl
-          # Install nvm (Node Version Manager)
-          - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-          # Load nvm
-          - export NVM_DIR="$HOME/.nvm"
-          - [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          - [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-          # Install Node.js 18
-          - nvm install 18
-          # Use Node.js 18
-          - nvm use 18
-          # Verify Node.js version
-          - node --version
-          # Install npm dependencies
-          - npm install
+          - |
+            # Install prerequisites
+            apt-get update && apt-get install -y curl
+
+            # Install nvm (Node Version Manager)
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+            # Load nvm
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+            # Install Node.js 18
+            nvm install 18
+
+            # Use Node.js 18
+            nvm use 18
+
+            # Verify Node.js version
+            node --version
+
+            # Install npm dependencies
+            npm install
           - npm run wdio
 
     - step:
