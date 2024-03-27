@@ -1,5 +1,3 @@
-# bitbucket-pipelines.yml
-
 image: ubuntu:latest
 
 pipelines:
@@ -9,13 +7,9 @@ pipelines:
         script:
           - apt-get update && apt-get install -y nodejs npm
           - apt-get install -y chromium-browser chromium-chromedriver
-          - ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+          - if [ ! -e /usr/bin/chromedriver ]; then ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver; fi
           - npm install
-
-    - step:
-        name: Run WebDriverIO Tests
-        script:
-          - npm test
+          - npm run wdio
 
     - step:
         name: Generate Allure Report
