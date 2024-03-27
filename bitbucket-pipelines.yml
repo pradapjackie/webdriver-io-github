@@ -1,13 +1,22 @@
-image: ubuntu-latest
+# bitbucket-pipelines.yml
+
+image: ubuntu:latest
+
 pipelines:
   default:
     - step:
-        name: Install Dependencies and Run Tests
-        caches:
-          - node
+        name: Install Dependencies
         script:
+          - apt-get update && apt-get install -y nodejs npm
+          - apt-get install -y chromium-browser chromium-chromedriver
+          - ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
           - npm install
-          - npm run wdio
+
+    - step:
+        name: Run WebDriverIO Tests
+        script:
+          - npm test
+
     - step:
         name: Generate Allure Report
         image: pradapjackie/allure-reports-generation:1.0
