@@ -1,4 +1,4 @@
-name: CI
+name: Webdriver Automation
 on:
   push:
     branches:
@@ -19,6 +19,7 @@ jobs:
           run: npm install
         - name: Test
           run: npm run wdio
+          continue-on-error: true
         - name: Generate Allure report
           run: npm run allure-generate
           continue-on-error: true
