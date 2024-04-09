@@ -8,6 +8,7 @@
     "@wdio/local-runner": "^8.35.1",
     "@wdio/spec-reporter": "^8.32.4",
     "ts-node": "^10.9.2",
+    "allure-commandline": "^2.27.0",
     "typescript": "^5.4.3"
   },
   "scripts": {
