@@ -1,17 +1,13 @@
-image: ubuntu:latest
+image: node:18
 
 pipelines:
   default:
     - step:
-        name: Install Dependencies
+        name: Build
+        caches:
+          - node
         script:
-          - apt-get update && apt-get install -y \
-            curl \
-            libglib2.0-0 \
-            chromium-browser \
-            chromium-chromedriver
-          - curl -sL https://deb.nodesource.com/setup_16.x | bash -
-          - apt-get install -y nodejs
           - npm install
           - npm run wdio
-
+        artifacts:
+          - reports/allure/allure-report/*
