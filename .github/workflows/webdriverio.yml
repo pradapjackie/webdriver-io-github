@@ -1,26 +1,26 @@
-name: CI
+name: Test JMeter Action
+
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:    
-      - main
+    branches: [main]
+
 jobs:
-  build:
+  action_build:
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-        - uses: actions/setup-node@v3
-          with:
-            node-version: 18
-        - name: Install
-          run: npm install
-        - name: Test
-          run: npm run wdio
-          continue-on-error: true
-        - uses: actions/upload-artifact@v3
-          with:
-            name: allureReport
-            path: ./reports/allure/allure-report
+      - uses: actions/checkout@v2
+
+      - name: Run JMeter Action on a test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: country-list.jmx
+          outputReportsFolder: reports/
+          args: "--loglevel INFO -Jthreads=2 -Jrampup=1 -Jloops=1"
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: jmeter-test-results
+          path: reports/
