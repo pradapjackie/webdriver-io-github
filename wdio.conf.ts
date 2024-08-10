@@ -59,10 +59,9 @@ export const config: Options.Testrunner = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        maxInstances: 5,
-        browserName: 'firefox',
-        'moz:firefoxOptions': {
-            args: ['-headless']
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+            args: ['--headless', '--disable-gpu', '--window-size=1920,1080']
         }
     }],
 
