@@ -8,8 +8,7 @@ install_dependencies:
   stage: install-and-test
   script:
     - npm install
-    - apt-get update
-    - apt-get install -y libnss3 libatk-bridge2.0-0 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxi6 libxtst6 libnss3-dev libxrandr2 libgbm1 libasound2
+    - npm install chromedriver
     - npm run wdio
 
 generate-allure-result:
