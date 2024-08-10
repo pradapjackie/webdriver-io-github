@@ -1,0 +1,26 @@
+image: node:20
+
+stages:
+  - install
+  - test
+
+install_dependencies:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+run_tests:
+  stage: test
+  script:
+    - npm run wdio
+  artifacts:
+    when: always
+    paths:
+      - reports/
+    reports:
+      junit: reports/junit-report.xml
+  only:
+    - main
