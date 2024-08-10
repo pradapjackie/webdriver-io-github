@@ -3,6 +3,7 @@ image: node:20
 stages:
   - install
   - test
+  - generate-allure-report
 
 install_dependencies:
   stage: install
@@ -22,3 +23,17 @@ run_tests:
       - allure-results/
   only:
     - main
+
+generate-allure-result:
+  stage: generate-allure-report
+  image: pradapjackie/allure-reports-generation:1.0
+  artifacts:
+    paths:
+      - allure-results
+      - allure-report
+    when: always
+    expire_in: 1 days
+  script:
+    - allure generate allure-results --clean -o allure-report
+  when: manual
+  allow_failure: true
