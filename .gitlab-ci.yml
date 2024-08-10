@@ -1,11 +1,15 @@
-image: node:20
-
 stages:
   - install-and-test
   - generate-allure-report
 
 install_dependencies:
   stage: install-and-test
+  image: node:20
+  artifacts:
+    paths:
+      - allure-results
+    when: always
+    expire_in: 1 days
   script:
     - apt-get update
     - apt-get install -y --no-install-recommends wget gnupg2
