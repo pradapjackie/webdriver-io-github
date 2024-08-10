@@ -19,8 +19,6 @@ run_tests:
   artifacts:
     when: always
     paths:
-      - reports/
-    reports:
-      junit: reports/junit-report.xml
+      - allure-results/
   only:
     - main
