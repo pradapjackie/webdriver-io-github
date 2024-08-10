@@ -35,5 +35,5 @@ generate-allure-result:
     expire_in: 1 days
   script:
     - allure generate allure-results --clean -o allure-report
-  when: manual
+  when: always
   allow_failure: true
