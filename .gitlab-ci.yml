@@ -1,28 +1,14 @@
 image: node:20
 
 stages:
-  - install
-  - test
+  - install-and-test
   - generate-allure-report
 
 install_dependencies:
-  stage: install
+  stage: install-and-test
   script:
     - npm install
-  artifacts:
-    paths:
-      - node_modules/
-
-run_tests:
-  stage: test
-  script:
     - npm run wdio
-  artifacts:
-    when: always
-    paths:
-      - allure-results/
-  only:
-    - main
 
 generate-allure-result:
   stage: generate-allure-report
