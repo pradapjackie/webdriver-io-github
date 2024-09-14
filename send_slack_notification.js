@@ -32,7 +32,7 @@ const slackMessage = {
 
 // Send the message to Slack
 const sendSlackNotification = async () => {
-    const slackWebhookUrl = process.env.SLACK_WEBHOOK_URL; // Get Slack Webhook URL from environment variables
+    const slackWebhookUrl = "https://hooks.slack.com/services/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"; // Get Slack Webhook URL from environment variables
     try {
         await axios.post(slackWebhookUrl, slackMessage);
         console.log('Slack notification sent successfully!');
