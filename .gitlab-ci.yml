@@ -36,7 +36,7 @@ generate-allure-result:
   allow_failure: true
 
 send-slack-notification:
-  stage: notify
+  stage: send-slack-notification
   image: node:18
   script:
     - npm install axios
