@@ -1,6 +1,7 @@
 stages:
   - install-and-test
   - generate-allure-report
+  - send-slack-notification
 
 install_dependencies:
   stage: install-and-test
@@ -26,9 +27,19 @@ generate-allure-result:
   artifacts:
     paths:
       - allure-report
+      - allure-results
     when: always
     expire_in: 1 days
   script:
     - allure generate allure-results --clean -o allure-report
   when: always
   allow_failure: true
+
+send-slack-notification:
+  stage: notify
+  image: node:18
+  script:
+    - npm install axios
+    - node send_slack_notification.js
+  dependencies:
+    - generate-allure-result
