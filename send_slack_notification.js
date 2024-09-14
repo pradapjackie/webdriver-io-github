@@ -1,5 +1,6 @@
-const fs = require('fs');
-const axios = require('axios');
+// Importing the required modules
+import fs from 'fs';
+import axios from 'axios';
 
 // Read JSON data from file
 const reportData = JSON.parse(fs.readFileSync('allure-results/report.json', 'utf-8'));
