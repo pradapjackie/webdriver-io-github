@@ -3,7 +3,7 @@ import fs from 'fs';
 import axios from 'axios';
 
 // Read JSON data from file
-const reportData = JSON.parse(fs.readFileSync('allure-results/report.json', 'utf-8'));
+const reportData = JSON.parse(fs.readFileSync('allure-report/widgets/summary.json', 'utf-8'));
 
 // Extract necessary fields
 const {
